@@ -7,12 +7,13 @@ from aims_cube.utils.str_utils import str2bool
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='FHI-aims cube file to VASP-compatible PARCHG converter.')
+    parser = argparse.ArgumentParser(description='FHI-aims .cube file to VASP-compatible PARCHG converter.',
+                                     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('cube', type=str, help='Path to the input FHI-aims .cube file.')
     parser.add_argument('geometry_in', type=str, help='Path to the input FHI-aims geometry.in file.')
     parser.add_argument('-o', '--output', type=str, default='.', help='Path to the output directory.')
     parser.add_argument('-b', '--cube_box', type=str2bool, default=False,
-                        help='Whether to use the non-periodic box defined in the cube file as the output box.')
+                        help='Whether to use the non-periodic box defined in the .cube file as the output box.')
     parser.add_argument('-t', '--translate', type=float, nargs=3, default=None,
                         metavar=('TRANSLATE_A', 'TRANSLATE_B', 'TRANSLATE_C'),
                         help='Translation vector in fractional coordinates by which all sites and the volumetric data will be translated (three float values, one for each lattice axis, required).')
